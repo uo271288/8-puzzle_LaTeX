@@ -18,13 +18,13 @@ Miguel Menéndez Rodríguez UO269871}
 \url{https://www.uniovi.es}}
 \maketitle   
 \begin{abstract}
-In this paper, the aima-java project will be used to test two different algorithms, the A* algorithm, and the Weighted A* algorithm. After a short explanation of said algorithms and the 8-Puzzle problem, which we will be using as an example for this paper, we will experiment on him with different end states and weights, proving that the results go according to the explained theory. To accomplish that, we will be comparing the information acquired after using the different heuristics and algorithms after reaching a solution.
+In this paper, the aima-java project will be used to test two different algorithms, the A* algorithm, and the Weighted A* algorithm. After a short explanation of said algorithms and the 8-Puzzle problem, which we will be using as an example for this paper, we will experiment on him with different end states, proving that the results go according to the explained theory. To accomplish that, we will be comparing the information acquired after using the different heuristics and algorithms.
 \keywords{A* \and Weighted A* \and 8-Puzzle \and search space \and heuristic}
 \end{abstract}
 
 \section{Introduction}
 The objective of this paper is to briefly describe the 8-Puzzle problem and to perform an experimental study of some heuristics used to solve this problem with the A* and weighted A* algorithms. It will also explain in more detail how the A* and weighted A* algorithms are applied to the 8-Puzzle problem.
-The A* algorithm aims to solve the problem in a way that it always reaches an optimal solution. For that, we'll be using the search spaces and heuristics.
+The A* algorithm aims to solve the problem in a way that it always reaches an optimal solution. For that, we'll be using the search spaces and three heuristics.
 On the other hand, the weighted A* algorithm doesn't go for the best solution, focusing on the states that are closer to the goal.
 To appreciate the differences between the two algorithms, we'll be paying attention to the number of expanded nodes, the time used and the cost, the obtained solutions, among many other things, after applying the algorithms to the 8-puzzle problem.
 In the end, we'll be comparing all this information, deciding which algorithm, and which heuristic are best for the problem.
@@ -39,7 +39,7 @@ Using different algorithms, we'll be searching for the sequence of movements tha
 \section{A* and weighted A* algorithms} \label{s:awa}
 The A* and weighted A* algorithms are path search and graph traversal algorithms. They are used in many fields on account of their optimal efficiency, completeness and optimality.
 \subsection{A* algorithm}
-The A* algorithm is best-first search algorithm, which means that it's formulated on weighted graphs. Starting on a specific node of the graph, its purpose is to find the path with the smallest cost to the goal node using a tree of paths, extending paths until the criterion is satisfied.
+The A* algorithm is a best-first search algorithm, which means that it's formulated on weighted graphs. It was first published by Peter Hart, Nils Nilsson and Bertram Raphael in 1968 \cite{astar}. Starting on a specific node of the graph, its purpose is to find the path with the smallest cost to the goal node using a tree of paths, extending paths until the criterion is satisfied.
 It finds the path with the minimum cost following the equation f(n) = g(n) + h(n) where n is the next node, g(n) is the path cost from the start node to that node, and h(n) is the heuristic estimating the cost from that node to the goal node.
 \subsubsection{Properties}
 \paragraph{Admissibility}
@@ -230,14 +230,10 @@ Finally, the conclusions reached after the completion of this work were drawn by
 \bibliographystyle{splncs04}
 %
 \begin{thebibliography}{8}
+\bibitem{astar}
+Hart, P. E.; Nilsson, N. J.; Raphael, B. (1968). "A Formal Basis for the Heuristic Determination of Minimum Cost Paths". IEEE Transactions on Systems Science and Cybernetics. 4 (2): 100–107 \doi{10.1109/TSSC.1968.300136}
 \bibitem{ref_article1}
 Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
-
-\bibitem{ref_lncs1}
-Author, F., Author, S.: Title of a proceedings paper. In: Editor,
-F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
-Springer, Heidelberg (2016). \doi{10.10007/1234567890}
-
 \bibitem{ref_book1}
 Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
 Location (1999)
