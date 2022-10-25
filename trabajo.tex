@@ -37,11 +37,21 @@ The 8-Puzzle problem consists on a 3x3 board with 8 tiles labeled from 1 to 8. T
 Using different algorithms, we'll be searching for the sequence of movements that we'll need to go through to reach the solution, trying to use the less time of execution and number of movements possible.
 
 \section{A* and weighted A* algorithms} \label{s:awa}
-a
+The A* and weighted A* algorithms are path search and graph traversal algorithms. They are used in many fields on account of their optimal efficiency, completeness and optimality.
 \subsection{A* algorithm}
-a
+The A* algorithm is best-first search algorithm, which means that it's formulated on weighted graphs. Starting on a specific node of the graph, its purpose is to find the path with the smallest cost to the goal node using a tree of paths, extending paths until the criterion is satisfied.
+It finds the path with the minimum cost following the equation f(n) = g(n) + h(n) where n is the next node, g(n) is the path cost from the start node to that node, and h(n) is the heuristic estimating the cost from that node to the goal node.
+\subsubsection{Properties}
+\paragraph{Admissibility}
+A search algorithm is admissible when the return of an optimal solution is guaranteed. Hence, if the heuristic is admissible, A* is admissible too. h is properly defined when h(n)\geq0 for every non goal node, and h(n) = 0 for the goal node. If h(n)\leq h*(n) for every n, then h is admissible and always returns the optimal solution.
+\paragraph{Consistency}
+h is consistent if for every n1 and n2 it holds that h(n1) \leq h(n2) + k(n1,n2), k being the cost of the shortest path between n1 and n2. If there's no path, it'll be infinite. If an algorithm is consistent, it is also admissible.
+\paragraph{Dominance}
+Being h1 and h2 admissible, we say there's a non-strict dominance if h1(n) \leq h2(n) \leq h*(n) for every n.
+There's a strict dominance if h1(n) < h2(n) for every non-goal n.
 \subsection{Weighted A* algorithm}
-a
+The weighted A* algorithm is a relaxed version of the A* algorithm, allowing it not to examine all the nodes, therefore speeding up the search even if it doesn't find the most optimal path. To bound this relaxation, \epsilon is used. The evaluation function will in the end be f(n) = g(n) + (1+\epsilon)h(n), with \epsilon \geq 0. It won't be admissible, but rather \epsilon-admissible.
+
 \section{A* and weighted A* applied to the 8-Puzzle problem} \label{s:awa8p}
 a
 \subsection{Heuristics}\label{ss:heuristics}
