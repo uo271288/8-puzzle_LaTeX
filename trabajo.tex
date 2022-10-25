@@ -28,7 +28,7 @@ The A* algorithm aims to solve the problem in a way that it always reaches an op
 On the other hand, the weighted A* algorithm doesn't go for the best solution, focusing on the states that are closer to the goal.
 To appreciate the differences between the two algorithms, we'll be paying attention to the number of expanded nodes, the time used and the cost, the obtained solutions, among many other things, after applying the algorithms to the 8-puzzle problem.
 In the end, we'll be comparing all this information, deciding which algorithm, and which heuristic are best for the problem.
-
+Most of the information has been taken from \cite{ref_article1} and \cite{ref_article2}.
 
 \section{8-Puzzle problem}
 The 8-Puzzle problem is a widely known problem in the field of Artificial Intelligence. That is due to the fact that, despite its apparent simplicity, it can be very costly for a computer to solve it.
@@ -50,11 +50,14 @@ h is consistent if for every n1 and n2 it holds that h(n1) \leq h(n2) + k(n1,n2)
 Being h1 and h2 admissible, we say there's a non-strict dominance if h1(n) \leq h2(n) \leq h*(n) for every n.
 There's a strict dominance if h1(n) < h2(n) for every non-goal n.
 \subsection{Weighted A* algorithm}
-The weighted A* algorithm is a relaxed version of the A* algorithm, allowing it not to examine all the nodes, therefore speeding up the search even if it doesn't find the most optimal path. To bound this relaxation, \epsilon is used. The evaluation function will in the end be f(n) = g(n) + (1+\epsilon)h(n), with \epsilon \geq 0. It won't be admissible, but rather \epsilon-admissible.
+The weighted A* algorithm is a relaxed version of the A* algorithm, allowing it not to examine all the nodes, therefore speeding up the search even if it doesn't find the most optimal path. To bound this relaxation, \varepsilon is used. The evaluation function will in the end be f(n) = g(n) + (1+\varepsilon)h(n), with \varepsilon \geq 0. It won't be admissible, but rather \varepsilon-admissible.
 
 \section{A* and weighted A* applied to the 8-Puzzle problem} \label{s:awa8p}
-a
-\subsection{Heuristics}\label{ss:heuristics}
+The search space is described by:
+\begin{itemize}
+\item[$\ast$]States: the situation in which the tiles on the board are located and the target state.
+\item[$\ast$]Rules: move a piece to the empty position if it is orthogonally adjacent.
+\end{itemize}
 The heuristics we will be using are the following:
 \begin{enumerate}
 \item h0: Null heuristic. It is not informed.
@@ -64,7 +67,7 @@ The heuristics we will be using are the following:
 "Weighted" heuristics mean the version of these heuristics for the problem in which the cost of the rules is \(2^i\)
 
 \section{Experimental study}
-The following sections will describe the design and results of the study of the two aforementioned algorithms put into practice. This experimental study will be carried out with the heuristics detailed in \ref{ss:heuristics}.
+The following sections will describe the design and results of the study of the two aforementioned algorithms put into practice. This experimental study will be carried out with the heuristics detailed in \ref{s:awa8p}.
 \subsection{Design of the study}
 We will try to solve the 8-puzzle problem using the algorithms and heuristics described in \ref{s:awa} and \ref{s:awa8p}. We will measure the time each algorithm takes to run with each heuristic and compare them. Moreover, we will also analyze the number of expanded and reinserted nodes. These samples will be taken from different initial states.
 \\
@@ -176,7 +179,7 @@ The plot \ref{fig:wastar} represents the time versus cost for weighted A* algori
 \end{figure}
 
 \section{Conclusion}
-a
+
 \section*{Acknowledgments}
 We would like to thank the professors of the Intelligent Systems course for giving us the tools and knowledge necessary to carry out this study.
 \section*{Appendix A. Contributions}
@@ -232,17 +235,11 @@ Finally, the conclusions reached after the completion of this work were drawn by
 \begin{thebibliography}{8}
 \bibitem{astar}
 Hart, P. E.; Nilsson, N. J.; Raphael, B. (1968). "A Formal Basis for the Heuristic Determination of Minimum Cost Paths". IEEE Transactions on Systems Science and Cybernetics. 4 (2): 100–107 \doi{10.1109/TSSC.1968.300136}
+
 \bibitem{ref_article1}
-Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
-\bibitem{ref_book1}
-Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
-Location (1999)
+Topic 2 of the syllabus of the course. Introduction to Search Systems in Artificial Intelligence.
 
-\bibitem{ref_proc1}
-Author, A.-B.: Contribution title. In: 9th International Proceedings
-on Proceedings, pp. 1--2. Publisher, Location (2010)
-
-\bibitem{ref_url1}
-LNCS Homepage, \url{http://www.springer.com/lncs}.
+\bibitem{ref_article2}
+Topic 3 of the syllabus of the course. Heuristic search.
 \end{thebibliography}
 \end{document}
