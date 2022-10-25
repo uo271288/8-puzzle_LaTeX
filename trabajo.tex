@@ -3,6 +3,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{multirow}
+\usepackage{float}
 
 \begin{document}
 
@@ -34,32 +36,132 @@ The 8-Puzzle problem is a widely known problem in the field of Artificial Intell
 The 8-Puzzle problem consists on a 3x3 board with 8 tiles labeled from 1 to 8. The goal is to slide the tiles orthogonally to the empty space to match the final configuration. This means that two tiles can not be in the same space, a tile can not pass over another nor can it move diagonally.
 Using different algorithms, we'll be searching for the sequence of movements that we'll need to go through to reach the solution, trying to use the less time of execution and number of movements possible.
 
-\section{A* and weighted A* algorithms}
+\section{A* and weighted A* algorithms} \label{s:awa}
 a
 \subsection{A* algorithm}
 a
 \subsection{Weighted A* algorithm}
 a
-\section{A* and weighted A* applied to the 8-Puzzle problem}
+\section{A* and weighted A* applied to the 8-Puzzle problem} \label{s:awa8p}
 a
-\subsection{Heuristics}
+\subsection{Heuristics}\label{ss:heuristics}
 The heuristics we will be using are the following:
 \begin{enumerate}
 \item h0: Null heuristic. It is not informed.
-\item h1: Weighted Manhattan distance. The Manhattan distance between the goal and the current locations is the sum of the absolute differences of their Cartesian coordinates.
-\item h2: Weighted misplaced tiles. The number of tiles that are not on the goal location.
+\item h1: Weighted misplaced tiles. The number of tiles that are not on the goal location.
+\item h2: Weighted Manhattan distance. The Manhattan distance between the goal and the current locations is the sum of the absolute differences of their Cartesian coordinates.
 \end{enumerate}
-"Weighted" heuristics refers to the version of the heuristic for the problem in which the cost of the rules is \(2^i\)
+"Weighted" heuristics mean the version of these heuristics for the problem in which the cost of the rules is \(2^i\)
 
 \section{Experimental study}
-a
+The following sections will describe the design and results of the study of the two aforementioned algorithms put into practice. This experimental study will be carried out with the heuristics detailed in \ref{ss:heuristics}.
 \subsection{Design of the study}
-a
+We will try to solve the 8-puzzle problem using the algorithms and heuristics described in \ref{s:awa} and \ref{s:awa8p}. We will measure the time each algorithm takes to run with each heuristic and compare them. Moreover, we will also analyze the number of expanded and reinserted nodes. These samples will be taken from different initial states.
+\\
+The data were taken in an apparatus with the following characteristics:
+
+\begin{itemize}
+\item[$\ast$] Processor: Intel Core i5-6300HQ CPU @ 2.30GHz (4 CPUs)
+\item[$\ast$] RAM: 8192MB
+\end{itemize}
+As mentioned before, the aima-java project will be used with some modifications, such as new heuristics, to collect the data.
 \subsection{Experimental results}
-a
+Since the heuristic h0 is not informed it will be exactly the same for both the A* and the weighted A* algorithm
+\subsubsection{A* algorithm}~\\
+The following tables show the number of nodes expanded and reinserted using A* algorithm by each heuristic for the initial states of cost 5, 15 and 30 respectively.
+
+\begin{table}[H]
+    \centering
+\caption{\label{tab:table1}Number of nodes for the instance \{ 1, 0, 3, 8, 2, 5, 7, 4, 6 \} of cost 5.}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+       & \multicolumn{3}{|c|}{Heuristic} \\ \hline
+        Nodes & h0 & h1 & h2 \\ \hline
+        Expanded & 32 & 7 & 5 \\ \hline
+        Reinserted & 0 & 0 & 0 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+\caption{\label{tab:table2}Number of nodes for the instance \{ 4, 8, 2, 6, 3, 5, 1, 0, 7 \} of cost 15.}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+       & \multicolumn{3}{|c|}{Heuristic} \\ \hline
+        Nodes & h0 & h1 & h2 \\ \hline
+        Expanded & 57663 & 1808 & 25 \\ \hline
+        Reinserted & 0 & 0 & 0 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+\caption{\label{tab:table3}Number of nodes for the instance \{ 5, 6, 7, 2, 8, 4, 0, 3, 1 \} of cost 30.}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+       & \multicolumn{3}{|c|}{Heuristic} \\ \hline
+        Nodes & h0 & h1 & h2 \\ \hline
+        Expanded & 175390 & 103737 & 9126 \\ \hline
+        Reinserted & 0 & 0 & 0 \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{Weighted A* algorithm}~\\
+The following tables show the number of nodes expanded and reinserted using weighted A* algorithm by each heuristic for the initial states of cost 5, 15 and 30 respectively.
+
+\begin{table}[H]
+    \centering
+\caption{\label{tab:table1}Number of nodes for the instance \{ 1, 0, 3, 8, 2, 5, 7, 4, 6 \} of cost 5.}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+       & \multicolumn{3}{|c|}{Heuristic} \\ \hline
+        Nodes & h0 & h1 & h2 \\ \hline
+        Expanded & 32 & 7 & 5 \\ \hline
+        Reinserted & 0 & 0 & 0 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+\caption{\label{tab:table2}Number of nodes for the instance \{ 4, 8, 2, 6, 3, 5, 1, 0, 7 \} of cost 15.}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+       & \multicolumn{3}{|c|}{Heuristic} \\ \hline
+        Nodes & h0 & h1 & h2 \\ \hline
+        Expanded & 57663 & 7087 & 47 \\ \hline
+        Reinserted & 0 & 429 & 0 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+\caption{\label{tab:table2}Number of nodes for the instance \{ 5, 6, 7, 2, 8, 4, 0, 3, 1 \} of cost 30.}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+       & \multicolumn{3}{|c|}{Heuristic} \\ \hline
+        Nodes & h0 & h1 & h2 \\ \hline
+        Expanded & 175390 & 102031 & 5623 \\ \hline
+        Reinserted & 0 & 21845 & 1369 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{AStarTimes.jpg}
+    \caption{a nice plot}
+    \label{fig:mesh1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{WeightedAStarTimes.jpg}
+    \caption{a nice plot}
+    \label{fig:mesh1}
+\end{figure}
+
 \section{Conclusion}
 a
-\subsubsection{Acknowledgments}
+\section*{Acknowledgments}
 We would like to thank the professors of the Intelligent Systems course for giving us the tools and knowledge necessary to carry out this study.
 \section*{Appendix A. Contributions}
 Alejandro Álvarez was in charge of the measurements of the algorithms, the comparisons between the heuristics and their definitions. He also wrote the section dedicated to the experimental study.
@@ -68,27 +170,6 @@ Miguel Menéndez was in charge of writing the introduction to this paper, descri
 \\
 Finally, the conclusions reached after the completion of this work were drawn by both members.
 
-
-
-
-%The contribution should contain no more than four levels of
-%headings. Table~\ref{tab1} gives a summary of all heading levels.
-
-%\begin{table}
-%\caption{Table captions should be placed above the
-%tables.}\label{tab1}
-%\begin{tabular}{|l|l|l|}
-%\hline
-%Heading level &  Example & Font size and style\\
-%\hline
-%Title (centered) &  {\Large\bfseries Lecture Notes} & 14 point, bold\\
-%1st-level heading &  {\large\bfseries 1 Introduction} & 12 point, bold\\
-%2nd-level heading & {\bfseries 2.1 Printing Area} & 10 point, bold\\
-%3rd-level heading & {\bfseries Run-in Heading in Bold.} Text follows & 10 point, bold\\
-%4th-level heading & {\itshape Lowest Level Heading.} Text follows & 10 point, italic\\
-%\hline
-%\end{tabular}
-%\end{table}
 %
 %
 %\noindent Displayed equations are centered and set on a separate
