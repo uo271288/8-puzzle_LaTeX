@@ -8,8 +8,8 @@
 
 \begin{document}
 
-\title{A* and weighted A* algorithms used to solved 8-Puzzle problem - Overview and application}
-%
+\title{A* and weighted A* algorithms used to solved 8-Puzzle problem. Overview and application.}
+
 \titlerunning{A* and weighted A* applied to 8-Puzzle}
 \author{Alejandro Álvarez Varela UO271288\and
 Miguel Menéndez Rodríguez UO269871}
@@ -68,9 +68,9 @@ As mentioned before, the aima-java project will be used with some modifications,
 \subsection{Experimental results}
 Since the heuristic h0 is not informed it will be exactly the same for both the A* and the weighted A* algorithm
 \subsubsection{A* algorithm}~\\
-The following tables show the number of nodes expanded and reinserted using A* algorithm by each heuristic for the initial states of cost 5, 15 and 30 respectively.
 
-\begin{table}[H]
+The table \ref{tab:table1} shows the number of nodes expanded and reinserted by A* algorithm with each heuristic for a search space of cost 5.
+\begin{table}
     \centering
 \caption{\label{tab:table1}Number of nodes for the instance \{ 1, 0, 3, 8, 2, 5, 7, 4, 6 \} of cost 5.}
     \begin{tabular}{|c|c|c|c|}
@@ -82,7 +82,8 @@ The following tables show the number of nodes expanded and reinserted using A* a
     \end{tabular}
 \end{table}
 
-\begin{table}[H]
+The table \ref{tab:table2} shows the number of nodes expanded and reinserted by A* algorithm with each heuristic for a search space of cost 15.
+\begin{table}
     \centering
 \caption{\label{tab:table2}Number of nodes for the instance \{ 4, 8, 2, 6, 3, 5, 1, 0, 7 \} of cost 15.}
     \begin{tabular}{|c|c|c|c|}
@@ -94,7 +95,8 @@ The following tables show the number of nodes expanded and reinserted using A* a
     \end{tabular}
 \end{table}
 
-\begin{table}[H]
+The table \ref{tab:table3} shows the number of nodes expanded and reinserted by A* algorithm with each heuristic for a search space of cost 30.
+\begin{table}
     \centering
 \caption{\label{tab:table3}Number of nodes for the instance \{ 5, 6, 7, 2, 8, 4, 0, 3, 1 \} of cost 30.}
     \begin{tabular}{|c|c|c|c|}
@@ -106,12 +108,20 @@ The following tables show the number of nodes expanded and reinserted using A* a
     \end{tabular}
 \end{table}
 
-\subsubsection{Weighted A* algorithm}~\\
-The following tables show the number of nodes expanded and reinserted using weighted A* algorithm by each heuristic for the initial states of cost 5, 15 and 30 respectively.
-
-\begin{table}[H]
+The plot \ref{fig:astar} represents the time versus cost for A* algorithm with each heuristic.
+\begin{figure}[H]
     \centering
-\caption{\label{tab:table1}Number of nodes for the instance \{ 1, 0, 3, 8, 2, 5, 7, 4, 6 \} of cost 5.}
+    \includegraphics{AStarTimes.jpg}
+    \caption{Time vs. cost plot for A* algorithm with each heuristic}
+    \label{fig:astar}
+\end{figure}
+
+\subsubsection{Weighted A* algorithm}~\\
+
+The table \ref{tab:table4} shows the number of nodes expanded and reinserted by weighted A* algorithm with each heuristic for a search space of cost 5.
+\begin{table}
+    \centering
+\caption{\label{tab:table4}Number of nodes for the instance \{ 1, 0, 3, 8, 2, 5, 7, 4, 6 \} of cost 5.}
     \begin{tabular}{|c|c|c|c|}
     \hline
        & \multicolumn{3}{|c|}{Heuristic} \\ \hline
@@ -121,9 +131,10 @@ The following tables show the number of nodes expanded and reinserted using weig
     \end{tabular}
 \end{table}
 
-\begin{table}[H]
+The table \ref{tab:table5} shows the number of nodes expanded and reinserted by weighted A* algorithm with each heuristic for a search space of cost 15.
+\begin{table}
     \centering
-\caption{\label{tab:table2}Number of nodes for the instance \{ 4, 8, 2, 6, 3, 5, 1, 0, 7 \} of cost 15.}
+\caption{\label{tab:table5}Number of nodes for the instance \{ 4, 8, 2, 6, 3, 5, 1, 0, 7 \} of cost 15.}
     \begin{tabular}{|c|c|c|c|}
     \hline
        & \multicolumn{3}{|c|}{Heuristic} \\ \hline
@@ -133,9 +144,10 @@ The following tables show the number of nodes expanded and reinserted using weig
     \end{tabular}
 \end{table}
 
-\begin{table}[H]
+The table \ref{tab:table6} shows the number of nodes expanded and reinserted by weighted A* algorithm with each heuristic for a search space of cost 30.
+\begin{table}
     \centering
-\caption{\label{tab:table2}Number of nodes for the instance \{ 5, 6, 7, 2, 8, 4, 0, 3, 1 \} of cost 30.}
+\caption{\label{tab:table6}Number of nodes for the instance \{ 5, 6, 7, 2, 8, 4, 0, 3, 1 \} of cost 30.}
     \begin{tabular}{|c|c|c|c|}
     \hline
        & \multicolumn{3}{|c|}{Heuristic} \\ \hline
@@ -145,18 +157,12 @@ The following tables show the number of nodes expanded and reinserted using weig
     \end{tabular}
 \end{table}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics{AStarTimes.jpg}
-    \caption{a nice plot}
-    \label{fig:mesh1}
-\end{figure}
-
+The plot \ref{fig:wastar} represents the time versus cost for weighted A* algorithm with each heuristic.
 \begin{figure}[H]
     \centering
     \includegraphics{WeightedAStarTimes.jpg}
-    \caption{a nice plot}
-    \label{fig:mesh1}
+    \caption{Time vs. cost plot for weighted A* algorithm with each heuristic}
+    \label{fig:wastar}
 \end{figure}
 
 \section{Conclusion}
@@ -210,33 +216,27 @@ Finally, the conclusions reached after the completion of this work were drawn by
 %
 
 
+
+\bibliographystyle{splncs04}
 %
-% ---- Bibliography ----
-%
-% BibTeX users should specify bibliography style 'splncs04'.
-% References will then be sorted and formatted in the correct style.
-%
-%\bibliographystyle{splncs04}
-%\bibliography{mybibliography}
-%%
-%\begin{thebibliography}{8}
-%\bibitem{ref_article1}
-%Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
-%
-%\bibitem{ref_lncs1}
-%Author, F., Author, S.: Title of a proceedings paper. In: Editor,
-%F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
-%Springer, Heidelberg (2016). \doi{10.10007/1234567890}
-%
-%\bibitem{ref_book1}
-%Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
-%Location (1999)
-%
-%\bibitem{ref_proc1}
-%Author, A.-B.: Contribution title. In: 9th International Proceedings
-%on Proceedings, pp. 1--2. Publisher, Location (2010)
-%
-%\bibitem{ref_url1}
-%LNCS Homepage, \url{http://www.springer.com/lncs}.
-%\end{thebibliography}
+\begin{thebibliography}{8}
+\bibitem{ref_article1}
+Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
+
+\bibitem{ref_lncs1}
+Author, F., Author, S.: Title of a proceedings paper. In: Editor,
+F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
+Springer, Heidelberg (2016). \doi{10.10007/1234567890}
+
+\bibitem{ref_book1}
+Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
+Location (1999)
+
+\bibitem{ref_proc1}
+Author, A.-B.: Contribution title. In: 9th International Proceedings
+on Proceedings, pp. 1--2. Publisher, Location (2010)
+
+\bibitem{ref_url1}
+LNCS Homepage, \url{http://www.springer.com/lncs}.
+\end{thebibliography}
 \end{document}
